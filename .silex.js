@@ -44,6 +44,23 @@ module.exports = async function (config) {
         route: '/js/client-plugins/',
         path: './client-plugins/',
       },
+      {
+        route: '/plugins/',
+        path: 'node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/',
+      }, {
+        route: '/js/lit-html/',
+        path: 'node_modules/lit-html/',
+      }, {
+        // CMS Plugin
+        route: '/js/silex-cms/',
+        path: node_modules('@silexlabs/silex-cms') + '/@silexlabs/silex-cms/dist/',
+      }, {
+        route: '/js/client-filters.js',
+        path: './client-filters.js',
+      }, {
+        route: '/js/client-blocks.js',
+        path: './client-blocks.js',
+      },
     ],
   })
 }
