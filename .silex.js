@@ -53,7 +53,7 @@ module.exports = async function (config) {
       }, {
         // CMS Plugin
         route: '/js/silex-cms/',
-        path: node_modules('@silexlabs/silex-cms') + '/@silexlabs/silex-cms/dist/',
+        path: 'node_modules/@silexlabs/silex-cms/dist/',
       }, {
         route: '/js/client-filters.js',
         path: './client-filters.js',
