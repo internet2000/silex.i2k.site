@@ -40,6 +40,8 @@ jobs:
             client-config.js
             .nvmrc
             client-plugins
+            client-filters.js
+            client-blocks.js
             server-plugins
             onboarding.json
           outPath: deploy.tar
