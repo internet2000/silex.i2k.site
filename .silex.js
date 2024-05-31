@@ -6,7 +6,6 @@ const GitlabHostingConnector = require('@silexlabs/silex/dist/plugins/server/plu
 const FsStorage = require('@silexlabs/silex/dist/server/server/connectors/FsStorage').default
 const dash = require('@silexlabs/silex-dashboard')
 const StaticPlugin = require('@silexlabs/silex/dist/plugins/server/plugins/server/StaticPlugin').default
-const node_modules = require('node_modules-path')
 const onboarding = require(__dirname + '/server-plugins/onboarding.js')
 const { join } = require('path')
 

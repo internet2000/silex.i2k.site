@@ -5,7 +5,7 @@
   "scripts": {
     "release": "",
     "start": "silex --server-config `pwd`/.silex.js --client-config `pwd`/client-config.js",
-    "dev": "npm start -- --debug"
+    "dev": "source ./local.env && npm start"
   },
   "engines": {
     "node": ">=18"
