@@ -18,8 +18,8 @@ export default async function (config) {
         transformPermalink(path, type) {
             // Make absolute paths relative
             switch (type) {
-                //case 'css':
-                //    return path.startsWith('/') ? `.${path}` : path
+                case 'css':
+                    return `{{ site.url }}${path}`
                 case 'asset':
                     return `{{ site.url }}${path}`
             }
