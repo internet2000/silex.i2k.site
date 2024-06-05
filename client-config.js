@@ -31,8 +31,8 @@ export default async function (config) {
         dataSources: [],
         imagePlugin: false,
         i18nPlugin: true,
-        fetchPlugin: { duration: '5s' },
-        // cacheBuster: true,
+        fetchPlugin: false,
+        cacheBuster: true,
         filters: [
             'generic',
             'liquid',
