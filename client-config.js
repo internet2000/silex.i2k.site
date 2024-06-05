@@ -21,8 +21,7 @@ export default async function (config) {
                 //case 'css':
                 //    return path.startsWith('/') ? `.${path}` : path
                 case 'asset':
-                    console.log('transformPermalink', path)
-                    //return path.startsWith('/') ? `.${path}` : path
+                    return `{{ site.url }}${path}`
             }
             return path
         },
