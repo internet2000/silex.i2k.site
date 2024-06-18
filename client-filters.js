@@ -26,11 +26,6 @@ function deprecated(name) {
 }
 
 export default function (config) {
-  function onRef(stateEditor) {
-    const editor = config.getEditor()
-    return stateEditor && stateEditor.setEditor(editor)
-  }
-
   return [{
     type: 'filter',
     id: 'toLocalDate',
@@ -126,7 +121,7 @@ export default function (config) {
       options: {},
       quotedOptions: ['operator'],
       optionsKeys: ['condition1', 'operator', 'condition2'],
-      optionsForm: (field, options) => {
+      optionsForm: (field, options, selected) => {
         return html`
           <form>
             <div>
@@ -136,7 +131,8 @@ export default function (config) {
                 class="ds-state-editor__options"
                 value=${options.condition1 || []}
                 name="condition1"
-                ${ref(el => onRef(el))}
+                .editor=${config.getEditor()}
+                .selected=${selected}
               >
                 <label slot="label">First value</label>
               </state-editor>
@@ -159,7 +155,8 @@ export default function (config) {
                 class="ds-state-editor__options"
                 value=${options.condition2 || []}
                 name="condition2"
-                ${ref(el => onRef(el))}
+                .editor=${config.getEditor()}
+                .selected=${selected}
               >
                 <label slot="label">Second value</label>
               </state-editor>
@@ -199,7 +196,8 @@ export default function (config) {
                 class="ds-state-editor__options"
                 value=${options.lang || []}
                 name="lang"
-                ${ref(el => onRef(el))}
+                .editor=${config.getEditor()}
+                .selected=${selected}
               >
                 <label slot="label">Lang</label>
               </state-editor>
@@ -229,7 +227,8 @@ export default function (config) {
                 class="ds-state-editor__options"
                 value=${options.condition1 || []}
                 name="condition1"
-                ${ref(el => onRef(el))}
+                .editor=${config.getEditor()}
+                .selected=${selected}
                 root-type=${field?.typeIds[0] ?? ''}
               >
                 <label slot="label">First value</label>
@@ -253,7 +252,8 @@ export default function (config) {
                 class="ds-state-editor__options"
                 value=${options.condition2 || []}
                 name="condition2"
-                ${ref(el => onRef(el))}
+                .editor=${config.getEditor()}
+                .selected=${selected}
               >
                 <label slot="label">Second value</label>
               </state-editor>
