@@ -78,7 +78,7 @@ export default function (config) {
       type: 'filter',
       id: 'if',
       label: 'if (i2k)',
-      validate: input => true,
+      validate: input => !!input,
       output: type => type,
       apply: (value, { condition1, operator, condition2, elseValue = null }) => {
         switch (operator) {
