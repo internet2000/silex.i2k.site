@@ -1,5 +1,4 @@
 import { html } from './lit-html/lit-html.js'
-import { ref } from './lit-html/directives/ref.js'
 
 const OPERATORS = [
   '==',
@@ -120,8 +119,8 @@ export default function (config) {
       },
       options: {},
       quotedOptions: ['operator'],
-      optionsKeys: ['condition1', 'operator', 'condition2'],
-      optionsForm: (field, options, selected) => {
+      optionsKeys: ['condition1', 'operator', 'condition2', 'elseValue'],
+      optionsForm: (selected, field, options, stateName) => {
         return html`
           <form>
             <div>
@@ -161,6 +160,19 @@ export default function (config) {
                 <label slot="label">Second value</label>
               </state-editor>
             </div>
+            <div>
+              <state-editor
+                no-filters
+                data-is-input
+                class="ds-state-editor__options"
+                value=${options.elseValue || []}
+                name="elseValue"
+                .editor=${config.getEditor()}
+                .selected=${selected}
+              >
+                <label slot="label">Else value</label>
+              </state-editor>
+            </div>
           </form>
           `
       },
@@ -178,7 +190,7 @@ export default function (config) {
       options: {},
       quotedOptions: ['collection'],
       optionsKeys: ['collection', 'lang'],
-      optionsForm: (field, options) => {
+      optionsForm: (selected, field, options, stateName) => {
         return html`
           <form>
             <div>
@@ -217,7 +229,7 @@ export default function (config) {
       options: {},
       quotedOptions: ['condition1', 'operator'],
       optionsKeys: ['condition1', 'operator', 'condition2'],
-      optionsForm: (field, options) => {
+      optionsForm: (selected, field, options, stateName) => {
         return html`
           <form>
             <div>
