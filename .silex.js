@@ -3,7 +3,6 @@ const FtpConnector = require('@silexlabs/silex/dist/plugins/server/plugins/serve
 const DownloadConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/DownloadConnector').default
 const GitlabConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/GitlabConnector').default
 const GitlabHostingConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/GitlabHostingConnector').default
-const FsStorage = require('@silexlabs/silex/dist/server/server/connectors/FsStorage').default
 const dash = require('@silexlabs/silex-dashboard')
 const StaticPlugin = require('@silexlabs/silex/dist/plugins/server/plugins/server/StaticPlugin').default
 const onboarding = require(__dirname + '/server-plugins/onboarding.js')
