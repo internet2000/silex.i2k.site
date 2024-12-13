@@ -35,8 +35,85 @@ export default function (config) {
       const date = new Date(str)
       return date.toLocaleDateString()
     },
-    options: {},
+    options: {
+      format: 'LL',
+    },
     quotedOptions: [],
+    optionsForm: (selected, field, options, stateName) => {
+      // function (date, lang = this.page.lang, format = 'LL') {
+      // return moment(date).locale(lang).format(format)
+      //   type LongDateFormatKey = 'LTS' | 'LT' | 'L' | 'LL' | 'LLL' | 'LLLL' | 'lts' | 'lt' | 'l' | 'll' | 'lll' | 'llll';
+      return html`
+        <form>
+          <div>
+            <state-editor
+              no-filters
+              data-is-input
+              class="ds-state-editor__options"
+              value=${options.lang || []}
+              name="lang"
+              .editor=${config.getEditor()}
+              .selected=${selected}
+            >
+              <label
+                slot="label"
+                style="display: flex; align-items: center;"
+              >Lang
+                <span
+                  style="margin-left: 5px;"
+                  title="The language to use for the date. Defaults to current page language"
+                >ⓘ</span>
+              </label>
+            </state-editor>
+            <fieldset
+              style="border: none;"
+            >
+              <label
+                style="font-size: 1rem;display: flex;flex-direction: column; align-items: flex-start;"
+              >Format
+                <select
+                  name="format"
+                  style="background-color: unset; color: unset; margin: 5px 0; width: 100%;"
+                >
+                  <option value="LL" ?selected=${options.format === 'LL'}>LL</option>
+                  <option value="LTS" ?selected=${options.format === 'LTS'}>LTS</option>
+                  <option value="LT" ?selected=${options.format === 'LT'}>LT</option>
+                  <option value="L" ?selected=${options.format === 'L'}>L</option>
+                  <option value="LLL" ?selected=${options.format === 'LLL'}>LLL</option>
+                  <option value="LLLL" ?selected=${options.format === 'LLLL'}>LLLL</option>
+                  <option value="lts" ?selected=${options.format === 'lts'}>lts</option>
+                  <option value="lt" ?selected=${options.format === 'lt'}>lt</option>
+                  <option value="l" ?selected=${options.format === 'l'}>l</option>
+                  <option value="ll" ?selected=${options.format === 'll'}>ll</option>
+                  <option value="lll" ?selected=${options.format === 'lll'}>lll</option>
+                  <option value="llll" ?selected=${options.format === 'llll'}>llll</option>
+                </select>
+              </label>
+              <p>Check the <a href="https://momentjs.com/docs/#/displaying/format/" target="_blank">moment.js documentation</a> for more information</p>
+              <details
+                style="background-color: var(--ds-button-color); color: var(--ds-button-bg); margin: 0; padding: 0;"
+              >
+                <summary
+                  style="cursor: pointer; font-weight: bold; color: var(--ds-button-bg); padding: 0;"
+                >Examples</summary>
+                <p>LL: September 4, 1986</p>
+                <p>LTS: 8:30:25 PM</p>
+                <p>LT: 8:30 PM</p>
+                <p>L: 09/04/1986</p>
+                <p>LLL: September 4, 1986 8:30 PM</p>
+                <p>LLLL: Thursday, September 4, 1986 8:30 PM</p>
+                <p>lts: 8:30:25 PM</p>
+                <p>lt: 8:30 PM</p>
+                <p>l: 09/04/1986</p>
+                <p>ll: Sep 4, 1986</p>
+                <p>lll: Sep 4, 1986 8:30 PM</p>
+                <p>llll: Thu, Sep 4, 1986 8:30 PM</p>
+              </details>
+            </fieldset>
+          </div>
+        </form>
+        `
+    },
   }, {
       type: 'filter',
       id: 'removeDefaultLang',
