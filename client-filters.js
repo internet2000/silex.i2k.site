@@ -255,47 +255,6 @@ export default function (config) {
       },
     }, {
       type: 'filter',
-      id: 'permalink',
-      label: deprecated('permalink (i2k)'),
-      validate: input => !!input?.typeIds.map(t => t.toLowerCase()).includes('string'),
-      output: type => type,
-      apply: (title, {collection}) => {
-        // TODO: slugify tiltle, remove default language
-        const lang = '/fr'
-        return `${lang}${collection}/${title}/`
-      },
-      options: {},
-      quotedOptions: ['collection'],
-      optionsKeys: ['collection', 'lang'],
-      optionsForm: (selected, field, options, stateName) => {
-        return html`
-          <form>
-            <div>
-              <label>Collection</label>
-              <input
-                name="collection"
-                type="text"
-                value=${options.collection || ''}
-              />
-            </div>
-            <div>
-              <state-editor
-                no-filters
-                data-is-input
-                class="ds-state-editor__options"
-                value=${options.lang || []}
-                name="lang"
-                .editor=${config.getEditor()}
-                .selected=${selected}
-              >
-                <label slot="label">Lang</label>
-              </state-editor>
-            </div>
-          </form>
-          `
-      },
-    }, {
-      type: 'filter',
       id: 'where_exp',
       label: 'where_exp (i2k)',
       validate: field => !!field && field.kind === 'list',
@@ -345,6 +304,56 @@ export default function (config) {
                 .selected=${selected}
               >
                 <label slot="label">Second value</label>
+              </state-editor>
+            </div>
+          </form>
+          `
+      },
+    }, {
+      type: 'filter',
+      id: 'copyImage',
+      label: 'copyImage (i2k)',
+      validate: input => !!input?.typeIds.map(t => t.toLowerCase()).includes('string'),
+      output: type => type,
+      apply: (url) => url,
+      options: {},
+      quotedOptions: [],
+    }, {
+      type: 'filter',
+      id: 'permalink',
+      label: deprecated('permalink (i2k)'),
+      validate: input => !!input?.typeIds.map(t => t.toLowerCase()).includes('string'),
+      output: type => type,
+      apply: (title, {collection}) => {
+        // TODO: slugify tiltle, remove default language
+        const lang = '/fr'
+        return `${lang}${collection}/${title}/`
+      },
+      options: {},
+      quotedOptions: ['collection'],
+      optionsKeys: ['collection', 'lang'],
+      optionsForm: (selected, field, options, stateName) => {
+        return html`
+          <form>
+            <div>
+              <label>Collection</label>
+              <input
+                name="collection"
+                type="text"
+                value=${options.collection || ''}
+              />
+            </div>
+            <div>
+              <state-editor
+                no-filters
+                data-is-input
+                class="ds-state-editor__options"
+                value=${options.lang || []}
+                name="lang"
+                .editor=${config.getEditor()}
+                .selected=${selected}
+              >
+                <label slot="label">Lang</label>
               </state-editor>
             </div>
           </form>
