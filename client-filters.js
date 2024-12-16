@@ -38,7 +38,7 @@ export default function (config) {
     options: {
       format: 'LL',
     },
-    quotedOptions: [format],
+    quotedOptions: ['format'],
     optionsKeys: ['format', 'lang'],
     optionsForm: (selected, field, options, stateName) => {
       // function (date, lang = this.page.lang, format = 'LL') {
