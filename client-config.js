@@ -29,7 +29,6 @@ export default async function (config) {
     // CMS Plugin
     config.addPlugin(SilexCms, {
         dataSources: [],
-        imagePlugin: false,
         i18nPlugin: true,
         fetchPlugin: false,
         cacheBuster: true,
