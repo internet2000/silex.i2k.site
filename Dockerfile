@@ -29,7 +29,7 @@ ENV SILEX_URL=http://localhost:6805
 
 COPY . /silex
 WORKDIR /silex
-RUN npm install
+RUN npm ci
 # RUN npm run build
 
 CMD ["npm", "start"]
