@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:20.18.0
 
 RUN apt-get update
 EXPOSE 6805
