@@ -43,7 +43,6 @@ jobs:
             client-filters.js
             client-blocks.js
             server-plugins
-            onboarding.json
           outPath: deploy.tar
 
       - name: Deploy to CapRover

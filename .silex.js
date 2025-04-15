@@ -5,12 +5,9 @@ const GitlabConnector = require('@silexlabs/silex/dist/plugins/server/plugins/se
 const GitlabHostingConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/GitlabHostingConnector').default
 const dash = require('@silexlabs/silex-dashboard')
 const StaticPlugin = require('@silexlabs/silex/dist/plugins/server/plugins/server/StaticPlugin').default
-const onboarding = require(__dirname + '/server-plugins/onboarding.js')
-const { join } = require('path')
 
 module.exports = async function (config) {
   await config.addPlugin(dash)
-  await config.addPlugin(onboarding)
 
   initConnectors(config)
 
@@ -25,18 +22,12 @@ module.exports = async function (config) {
         route: '/plugins/',
         path: 'node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/',
       }, {
-        route: '/js/lit-html/',
+        route: '/js/client-plugins/lit-html/',
         path: 'node_modules/lit-html/',
       }, {
         // CMS Plugin
         route: '/js/silex-cms/',
         path: 'node_modules/@silexlabs/silex-cms/dist/',
-      }, {
-        route: '/js/client-filters.js',
-        path: './client-filters.js',
-      }, {
-        route: '/js/client-blocks.js',
-        path: './client-blocks.js',
       },
     ],
   })
