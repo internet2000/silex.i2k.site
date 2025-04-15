@@ -40,7 +40,6 @@ jobs:
             client-config.js
             .nvmrc
             client-plugins
-            server-plugins
           outPath: deploy.tar
 
       - name: Deploy to CapRover
