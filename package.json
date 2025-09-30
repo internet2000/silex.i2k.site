@@ -1,6 +1,6 @@
 {
   "name": "silex.i2k.site",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "This repo holds the code for the free public Silex instance hosted by Silex Labs foundation",
   "scripts": {
     "release": "",
