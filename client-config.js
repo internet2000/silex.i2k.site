@@ -1,5 +1,3 @@
-import SilexCms from './js/silex-cms/client.js'
-import filters from './js/client-plugins/client-filters.js'
 import blocks from './js/client-plugins/client-blocks.js'
 
 // This file is loaded by Silex when the user opens the editor
@@ -23,18 +21,6 @@ export default async function (config) {
         //    }
         //    return path
         //},
-    })
-    // CMS Plugin
-    config.addPlugin(SilexCms, {
-        dataSources: [],
-        i18nPlugin: true,
-        fetchPlugin: false,
-        cacheBuster: true,
-        filters: [
-            'generic',
-            'liquid',
-            ...filters(config),
-        ],
     })
     config.addPlugin(blocks)
     return {}
