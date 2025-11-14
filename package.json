@@ -13,9 +13,9 @@
   "author": "lexoyo",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
-    "@silexlabs/silex": "3.5.1-2",
+    "@silexlabs/silex": "3.5.1-4",
     "@silexlabs/silex-cms": "1.0.0",
-    "@silexlabs/silex-dashboard": "1.4.1-1"
+    "@silexlabs/silex-dashboard": "1.4.1-3"
   },
   "repository": {
     "type": "git",
