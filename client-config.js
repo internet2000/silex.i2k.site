@@ -1,4 +1,5 @@
 import blocks from './js/client-plugins/client-blocks.js'
+import filters from './js/client-plugins/client-filters.js'
 
 // This file is loaded by Silex when the user opens the editor
 // Its path is set in the environment variable SILEX_CLIENT_CONFIG in index.js
@@ -6,6 +7,7 @@ import websiteInfoPlugin from './plugins/client/website-info.js'
 
 export default async function (config) {
     config.addPlugin(websiteInfoPlugin, {})
+    config.addPlugin(blocks)
     config.addPublicationTransformers({
         transformPermalink: (path, type) => {
             // Replace /index.html with /
@@ -22,6 +24,13 @@ export default async function (config) {
         //    return path
         //},
     })
-    config.addPlugin(blocks)
+    // CMS Plugin custom config
+    config.cmsConfig = {
+        dataSources: [],
+        i18nPlugin: true,
+        fetchPlugin: false,
+        cacheBuster: true,
+        filters: filters(config),
+    }
     return {}
 }
