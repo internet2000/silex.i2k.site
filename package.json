@@ -13,7 +13,7 @@
   "author": "lexoyo",
   "license": "AGPL-3.0-or-later",
   "dependencies": {
-    "@silexlabs/silex": "3.6.5-canary.3",
+    "@silexlabs/silex": "3.6.5-canary.6",
     "@silexlabs/silex-cms": "1.0.0",
     "@silexlabs/silex-dashboard": "1.5.5-canary.1"
   },
