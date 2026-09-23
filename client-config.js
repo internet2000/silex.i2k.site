@@ -2,11 +2,9 @@ import blocks from './js/client-plugins/client-blocks.js'
 import filters from './js/client-plugins/client-filters.js'
 
 // This file is loaded by Silex when the user opens the editor
-// Its path is set in the environment variable SILEX_CLIENT_CONFIG in index.js
-import websiteInfoPlugin from './plugins/client/website-info.js'
+// Its path is set in the environment variable SILEX_CLIENT_CONFIG
 
 export default async function (config) {
-    config.addPlugin(websiteInfoPlugin, {})
     config.addPlugin(blocks)
     config.addPublicationTransformers({
         transformPermalink: (path, type) => {
@@ -24,7 +22,7 @@ export default async function (config) {
         //    return path
         //},
     })
-    // CMS Plugin custom config
+    // CMS custom config (the CMS is built into Silex since 3.9)
     config.cmsConfig = {
         dataSources: [],
         i18nPlugin: true,

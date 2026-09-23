@@ -1,33 +1,25 @@
-const { ConnectorType } = require('@silexlabs/silex/dist/server/types')
-const FtpConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/FtpConnector').default
-const DownloadConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/DownloadConnector').default
-const GitlabConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/GitlabConnector').default
-const GitlabHostingConnector = require('@silexlabs/silex/dist/plugins/server/plugins/server/GitlabHostingConnector').default
-const dash = require('@silexlabs/silex-dashboard')
-const StaticPlugin = require('@silexlabs/silex/dist/plugins/server/plugins/server/StaticPlugin').default
+// Silex 3.9+ loads this file (SILEX_SERVER_CONFIG) BEFORE its own default config
+// (node_modules/@silexlabs/silex/server/deploy/.silex.js), which already serves the
+// editor, the dashboard and the onboarding backend, and sets connectors from env vars.
+// Here we only add the i2k client plugins and force the i2k connectors.
+const { ServerEvent } = require('@silexlabs/silex/dist/server/server/events')
+const GitlabConnector = require('@silexlabs/silex/dist/server/server/plugins/GitlabConnector').default
+const GitlabHostingConnector = require('@silexlabs/silex/dist/server/server/plugins/GitlabHostingConnector').default
+const StaticPlugin = require('@silexlabs/silex/dist/server/server/plugins/StaticPlugin').default
 
 module.exports = async function (config) {
-  await config.addPlugin(dash)
+  // The default config (loaded after this file) resets the connectors from env vars
+  // => set the i2k ones at startup, once every config file is loaded
+  config.on(ServerEvent.STARTUP_START, () => initConnectors(config))
 
-  initConnectors(config)
-
-  // CMS Plugin
-  config.addPlugin(StaticPlugin, {
+  await config.addPlugin(StaticPlugin, {
     routes: [
       {
         route: '/js/client-plugins/',
         path: './client-plugins/',
-      },
-      {
-        route: '/plugins/',
-        path: 'node_modules/@silexlabs/silex/dist/plugins/client/plugins/client/',
       }, {
         route: '/js/client-plugins/lit-html/',
         path: 'node_modules/lit-html/',
-      }, {
-        // CMS Plugin
-        route: '/js/silex-cms/',
-        path: 'node_modules/@silexlabs/silex-cms/dist/',
       },
     ],
   })
