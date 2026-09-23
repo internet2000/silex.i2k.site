@@ -31,7 +31,7 @@ COPY . /silex
 WORKDIR /silex
 RUN npm i
 # Silex 3.9 dashboard plugin looks for its content in a git submodule absent from npm
-RUN ln -s ../silex-dashboard node_modules/@silexlabs/silex/silex-dashboard
+RUN ln -sfn ../silex-dashboard node_modules/@silexlabs/silex/silex-dashboard
 # RUN npm run build
 
 CMD ["npm", "start"]
